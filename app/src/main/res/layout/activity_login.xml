@@ -36,7 +36,6 @@ android:background="#00D09E"
             android:gravity="center"
             android:orientation="vertical">
 
-
             <TextView
                 style="@style/MainTextViewStyle"
                 android:layout_width="match_parent"
