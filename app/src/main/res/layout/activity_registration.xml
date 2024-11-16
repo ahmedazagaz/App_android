@@ -40,7 +40,7 @@
                 android:text="Full Name" />
 
             <EditText
-                android:id="@+id/Name_signup"
+                android:id="@+id/FullName_signup"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                 android:hint="Enter your password" />
 
             <Button
-                android:id="@+id/Btn_login"
+                android:id="@+id/btn_login"
                 style="@style/ButtonStyle"
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
                 android:text="Sign up" />
 
             <TextView
-                android:id="@+id/login_signup"
+                android:id="@+id/signin_here"
                 style="@style/LinkTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
