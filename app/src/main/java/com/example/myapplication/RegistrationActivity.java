@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,6 +49,23 @@ public class RegistrationActivity extends AppCompatActivity {
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                String FullName=mFullName.getText().toString();
+                String email=mEmail.getText().toString().trim();
+                String pass=mPass.getText().toString().trim();
+
+                if(TextUtils.isEmpty((FullName))){
+                    mFullName.setError("Name is required");
+                    return;
+                }
+                if (TextUtils.isEmpty(email)){
+                    mEmail.setError("Email is required");
+                    return;
+                }
+                if(TextUtils.isEmpty(pass)){
+                    mPass.setError("Password is required");
+                    return;
+                }
 
             }
         });
