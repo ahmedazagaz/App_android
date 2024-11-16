@@ -23,7 +23,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="632dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:fillViewport="true"
         android:background="@drawable/frame">
 
@@ -78,14 +78,6 @@
                 android:gravity="center"
                 android:linksClickable="true"
                 android:text="Forget password_login" />
-
-            <Button
-                android:id="@+id/sign_login"
-                style="@style/ButtonStyle"
-                android:layout_width="168dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="Sign up" />
 
             <TextView
                 android:id="@+id/signup_login"
