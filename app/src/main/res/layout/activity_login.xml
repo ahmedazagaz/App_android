@@ -10,7 +10,6 @@
     android:background="#00D09E"
     tools:context=".MainActivity">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,8 +25,7 @@
         android:layout_height="632dp"
         android:layout_marginTop="70dp"
         android:fillViewport="true"
-        android:background="#F1FFF3"
-        >
+        android:background="@drawable/frame">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,12 +35,10 @@
             android:orientation="vertical">
 
             <TextView
-                style="@style/MainTextViewStyle"
                 android:layout_width="match_parent"
+                style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-50dp"
-                android:gravity="center"
-                android:text="Log in" />
+                android:text="Email" />
 
             <EditText
                 android:id="@+id/Email_login"
@@ -50,7 +46,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:hint="Email" />
+                android:hint="example@gmail.com" />
+
+            <TextView
+                android:layout_width="match_parent"
+                style="@style/LabelTextStyle"
+                android:layout_height="wrap_content"
+                android:text="Password" />
 
             <EditText
                 android:id="@+id/Password_login"
@@ -58,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:hint="Password" />
+                android:hint="Enter your password" />
 
             <Button
                 android:id="@+id/Btn_login"
@@ -66,7 +68,7 @@
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="Login" />
+                android:text="Log In" />
 
             <TextView
                 android:id="@+id/forgetPassword"

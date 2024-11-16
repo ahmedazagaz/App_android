@@ -9,7 +9,6 @@
     android:background="#00D09E"
     tools:context=".MainActivity">
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,52 +22,71 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="632dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:fillViewport="true"
-        android:background="#F1FFF3"
-        >
+        android:background="@drawable/frame">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="700dp"
             android:layout_weight="0.75"
             android:gravity="center"
             android:orientation="vertical">
 
-            <EditText
-                android:id="@+id/FullName_signup"
-                style="@style/EditTextStyle"
+
+            <TextView
                 android:layout_width="match_parent"
+                style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="Full Name" />
+                android:text="Name" />
 
             <EditText
-                android:id="@+id/Email_signup"
+                android:id="@+id/Name_login"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:hint="Email" />
+                android:hint="example" />
+
+            <TextView
+                android:layout_width="match_parent"
+                style="@style/LabelTextStyle"
+                android:layout_height="wrap_content"
+                android:text="Email" />
 
             <EditText
-                android:id="@+id/Password_signup"
+                android:id="@+id/Email_login"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:hint="Password" />
+                android:hint="example@gmail.com" />
+
+            <TextView
+                android:layout_width="match_parent"
+                style="@style/LabelTextStyle"
+                android:layout_height="wrap_content"
+                android:text="Password" />
+
+            <EditText
+                android:id="@+id/Password_login"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:hint="Enter your password" />
 
             <Button
-                android:id="@+id/Btn_signup"
+                android:id="@+id/sign_login"
                 style="@style/ButtonStyle"
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="Sign Up" />
+                android:text="Sign up" />
 
             <TextView
-                android:id="@+id/login_signup"
+                android:id="@+id/signup_login"
                 style="@style/LinkTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
