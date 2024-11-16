@@ -1,0 +1,36 @@
+styles.xml
+    <?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Style pour le TextView principal -->
+    <style name="MainTextViewStyle">
+        <item name="android:textColor">#3D3D3D</item> <!-- Couleur de texte -->
+        <item name="android:textSize">22sp</item> <!-- Taille du texte -->
+        <item name="android:textStyle">bold</item> <!-- Texte en gras -->
+        <item name="android:layout_marginTop">16dp</item> <!-- Marge supérieure -->
+    </style>
+
+    <!-- Style pour les champs de saisie -->
+    <style name="EditTextStyle">
+        <item name="android:background">@drawable/edittext_background</item> <!-- Arrière-plan personnalisé -->
+        <item name="android:padding">12dp</item> <!-- Padding -->
+        <item name="android:layout_marginBottom">12dp</item> <!-- Marge inférieure -->
+        <item name="android:textColorHint">#757575</item> <!-- Couleur de l'indice (hint) -->
+        <item name="android:textColor">#000000</item> <!-- Couleur du texte -->
+    </style>
+
+    <!-- Style pour le bouton de connexion -->
+    <style name="ButtonStyle">
+        <item name="android:backgroundTint">#00D09E</item> <!-- Couleur de fond jaune -->
+        <item name="android:textColor">#000000</item> <!-- Texte en noir -->
+        <item name="android:padding">16dp</item> <!-- Padding -->
+        <item name="android:elevation">8dp</item> <!-- Élévation pour un effet d'ombre -->
+        <item name="android:layout_marginTop">20dp</item> <!-- Marge supérieure -->
+    </style>
+
+    <!-- Style pour les liens de texte (mot de passe oublié et inscription) -->
+    <style name="LinkTextViewStyle">
+        <item name="android:textColor">#000000</item> <!-- Couleur orange -->
+        <item name="android:textSize">16sp</item> <!-- Taille du texte -->
+        <item name="android:layout_marginTop">8dp</item> <!-- Marge supérieure -->
+    </style>
+</resources>
