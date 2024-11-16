@@ -10,7 +10,7 @@
 
     <!-- Style pour les champs de saisie -->
     <style name="EditTextStyle">
-        <item name="android:background">@drawable/edittext_background</item> <!-- Arrière-plan personnalisé -->
+        <item name="android:background">@drawable/edittext_background12</item> <!-- Arrière-plan personnalisé -->
         <item name="android:padding">12dp</item> <!-- Padding -->
         <item name="android:layout_marginBottom">12dp</item> <!-- Marge inférieure -->
         <item name="android:textColorHint">#757575</item> <!-- Couleur de l'indice (hint) -->
