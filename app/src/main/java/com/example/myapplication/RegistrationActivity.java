@@ -15,6 +15,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class RegistrationActivity extends AppCompatActivity {
 
+    // Déclaration des éléments d'interface utilisateur
+
     private EditText mFullName;
     private EditText mEmail;
     private EditText mPass;
@@ -36,9 +38,9 @@ public class RegistrationActivity extends AppCompatActivity {
         registration();
     }
 
+    // Méthode pour configurer l'interface utilisateur et les actions d'inscription
 
     private void registration(){
-
 
         mFullName=findViewById(R.id.FullName_signup);
         mEmail=findViewById(R.id.Email_signup);
@@ -46,14 +48,18 @@ public class RegistrationActivity extends AppCompatActivity {
         btnSignup=findViewById(R.id.btn_login);
         mSignin=findViewById(R.id.signin_here);
 
+        // Définir l'action du bouton d'inscription
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+                // Récupérer les valeurs des champs de texte
                 String FullName=mFullName.getText().toString();
                 String email=mEmail.getText().toString().trim();
                 String pass=mPass.getText().toString().trim();
+
+                // Vérifier si les champs est vide et afficher un message d'erreur
 
                 if(TextUtils.isEmpty((FullName))){
                     mFullName.setError("Name is required");
