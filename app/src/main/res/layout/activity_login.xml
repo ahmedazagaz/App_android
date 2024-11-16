@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -11,16 +11,18 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:gravity="center"
-        android:text="Welcome"
+        android:text="@string/welcome_text"
         android:textColor="#000000"
         android:textSize="32sp"
         android:textStyle="bold" />
 
     <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="632dp"
         android:layout_marginTop="10dp"
@@ -28,6 +30,7 @@
         android:background="@drawable/frame">
 
         <LinearLayout
+            android:id="@+id/inner_layout"
             android:layout_width="match_parent"
             android:layout_height="700dp"
             android:layout_weight="0.75"
@@ -35,32 +38,34 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/email_label"
                 android:layout_width="match_parent"
                 style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"
-                android:text="Email" />
+                android:text="@string/email_label" />
 
             <EditText
-                android:id="@+id/Email_login"
+                android:id="@+id/email_login"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:hint="example@gmail.com" />
+                android:hint="@string/email_hint" />
 
             <TextView
+                android:id="@+id/password_label"
                 android:layout_width="match_parent"
                 style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"
-                android:text="Password" />
+                android:text="@string/password_label" />
 
             <EditText
-                android:id="@+id/Password_login"
+                android:id="@+id/password_login"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:hint="Enter your password" />
+                android:hint="@string/password_hint" />
 
             <Button
                 android:id="@+id/btn_login"
@@ -68,25 +73,25 @@
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="Log In" />
+                android:text="@string/login_button_text" />
 
             <TextView
-                android:id="@+id/forgetPassword"
+                android:id="@+id/forget_password_link"
                 style="@style/LinkTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:linksClickable="true"
-                android:text="Forget password_login" />
+                android:text="@string/forget_password_text" />
 
             <TextView
-                android:id="@+id/signup_login"
+                android:id="@+id/signup_link"
                 style="@style/LinkTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:linksClickable="true"
-                android:text="Don't have an account? Sign Up" />
+                android:text="@string/signup_text" />
 
         </LinearLayout>
     </ScrollView>
