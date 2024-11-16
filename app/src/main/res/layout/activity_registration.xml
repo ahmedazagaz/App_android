@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -16,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="160dp"
         android:gravity="center"
-        android:text="Welcome"
+        android:text="Create Account"
         android:textColor="#000000"
         android:textSize="32sp"
         android:textStyle="bold" />
@@ -31,21 +30,21 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="700dp"
+            android:layout_height="100dp"
             android:layout_weight="0.75"
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                style="@style/MainTextViewStyle"
+            <EditText
+                android:id="@+id/FullName_signup"
+                style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="-50dp"
-                android:gravity="center"
-                android:text="Log in" />
+                android:layout_margin="20dp"
+                android:hint="Full Name" />
 
             <EditText
-                android:id="@+id/Email_login"
+                android:id="@+id/Email_signup"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +52,7 @@
                 android:hint="Email" />
 
             <EditText
-                android:id="@+id/Password_login"
+                android:id="@+id/Password_signup"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -61,39 +60,24 @@
                 android:hint="Password" />
 
             <Button
-                android:id="@+id/Btn_login"
+                android:id="@+id/Btn_signup"
                 style="@style/ButtonStyle"
-                android:layout_width="match_parent"
+                android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="Login" />
+                android:text="Sign Up" />
 
             <TextView
-                android:id="@+id/forgetPassword"
+                android:id="@+id/login_signup"
                 style="@style/LinkTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:linksClickable="true"
-                android:text="Forget password_login" />
-
-            <Button
-                android:id="@+id/sign_login"
-                style="@style/ButtonStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="Sign up" />
-
-            <TextView
-                android:id="@+id/signup_login"
-                style="@style/LinkTextViewStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:linksClickable="true"
-                android:text="Don't have an account? Sign Up" />
+                android:text="Already have an account?  Log In" />
 
         </LinearLayout>
     </ScrollView>
+
+
 </LinearLayout>
