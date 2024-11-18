@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -61,10 +63,12 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        //Registration Activity
         mSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Code pour passer à l'activité d'inscription
+                startActivity(new Intent(getApplicationContext(),RegistrationActivity.class));
             }
         });
 
@@ -72,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // Code pour le mot de passe oublié
+                startActivity(new Intent(getApplicationContext(),ReseatActivity.class));
             }
         });
     }
