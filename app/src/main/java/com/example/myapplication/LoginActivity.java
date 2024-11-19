@@ -24,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView mForgotPassword;
     private TextView mSignup;
-    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         initializeLoginComponents();
-        mAuth = FirebaseAuth.getInstance();
+
     }
 
     private void initializeLoginComponents() {

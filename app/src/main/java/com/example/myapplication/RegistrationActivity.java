@@ -15,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     // Déclaration des éléments d'interface utilisateur
@@ -24,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private EditText mPass;
     private Button btnSignup;
     private TextView mSignin;
-
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,9 @@ public class RegistrationActivity extends AppCompatActivity {
             return insets;
 
         });
+        mAuth = FirebaseAuth.getInstance();
         registration();
+
     }
 
     // Méthode pour configurer l'interface utilisateur et les actions d'inscription
