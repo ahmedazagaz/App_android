@@ -15,6 +15,8 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText mEmail;
@@ -22,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private TextView mForgotPassword;
     private TextView mSignup;
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         initializeLoginComponents();
+        mAuth = FirebaseAuth.getInstance();
     }
 
     private void initializeLoginComponents() {
@@ -61,6 +64,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 // Code de connexion à ajouter ici
             }
+
         });
 
         //Registration Activity
@@ -80,4 +84,5 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
 }
