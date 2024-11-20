@@ -25,7 +25,7 @@
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="632dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:fillViewport="true"
         android:background="@drawable/frame">
 
@@ -39,6 +39,7 @@
 
             <TextView
                 android:id="@+id/email_label"
+                android:layout_marginTop="-40dp"
                 android:layout_width="match_parent"
                 style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"

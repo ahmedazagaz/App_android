@@ -65,8 +65,8 @@ public class RegistrationActivity extends AppCompatActivity {
         mFullName = findViewById(R.id.FullName_signup);
         mEmail = findViewById(R.id.Email_signup);
         mPass = findViewById(R.id.Password_signup);
-        btnSignup = findViewById(R.id.btn_login);
-        mSignin = findViewById(R.id.signin_here);
+        btnSignup = findViewById(R.id.btn_signup);
+        mSignin = findViewById(R.id.login_here);
 
         // Définir l'action du bouton d'inscription
 

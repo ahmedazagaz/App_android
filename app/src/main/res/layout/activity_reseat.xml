@@ -10,87 +10,90 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="160dp"
         android:gravity="center"
-        android:text="@string/create_account_text"
+
+        android:text="@string/forget_password"
         android:textColor="#000000"
         android:textSize="32sp"
         android:textStyle="bold" />
 
     <ScrollView
+        android:id="@+id/scroll_view"
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="632dp"
+        android:layout_marginTop="40dp"
         android:fillViewport="true"
         android:background="@drawable/frame">
 
         <LinearLayout
+            android:id="@+id/inner_layout"
             android:layout_width="match_parent"
             android:layout_height="700dp"
             android:layout_weight="0.75"
             android:gravity="center"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                style="@style/LabelTextStyle"
-                android:layout_height="wrap_content"
-                android:text="@string/full_name_label" />
-
-            <EditText
-                android:id="@+id/FullName_signup"
-                style="@style/EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="@string/name_hint" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/Forget_pass_label"
+                android:layout_marginTop="-50dp"
                 style="@style/LabelTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/forget_pass_label"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/email_label"
+                style="@style/LabelTextStyle"
+                android:layout_marginTop="50dp"
+
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/email_label" />
 
             <EditText
-                android:id="@+id/Email_signup"
+                android:id="@+id/email_reset"
                 style="@style/EditTextStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
                 android:hint="@string/email_hint" />
 
-            <TextView
-                android:layout_width="match_parent"
-                style="@style/LabelTextStyle"
-                android:layout_height="wrap_content"
-                android:text="@string/password_label" />
 
-            <EditText
-                android:id="@+id/Password_signup"
-                style="@style/EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="@string/password_hint" />
 
             <Button
-                android:id="@+id/btn_signup"
+                android:id="@+id/btn_reset_password"
                 style="@style/ButtonStyle"
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"
-                android:text="@string/sign_up_button_text" />
+                android:text="@string/next_step" />
+
 
             <TextView
-                android:id="@+id/login_here"
+                android:id="@+id/backlogin"
                 style="@style/LinkTextViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:linksClickable="true"
-                android:text="@string/signin_text" />
+                android:text="@string/back_to_login" />
+            <TextView
+                android:id="@+id/signin_link"
+                style="@style/LinkTextViewStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:linksClickable="true"
+                android:text="@string/signup_text" />
 
         </LinearLayout>
     </ScrollView>

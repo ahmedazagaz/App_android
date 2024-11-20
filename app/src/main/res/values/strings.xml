@@ -4,10 +4,14 @@
     <string name="email_label">Email</string>
     <string name="email_hint">example@gmail.com</string>
     <string name="password_label">Password</string>
+    <string name="forget_pass_label">Reseat password</string>
     <string name="password_hint">Enter your password</string>
     <string name="login_button_text">Log In</string>
     <string name="forget_password_text">Forget password_login</string>
+    <string name="forget_password">Forget password</string>
     <string name="signup_text">Don\'t have an account? Sign Up</string>
+    <string name="next_step">Next Step</string>
+    <string name="back_to_login">Back to Login</string>
 
     <string name="create_account_text">Create Account</string>
     <string name="full_name_label">Full Name</string>
