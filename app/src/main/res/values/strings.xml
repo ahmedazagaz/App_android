@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">BudgetWise</string>
     <string name="welcome_text">Welcome</string>
     <string name="email_label">Email</string>
     <string name="email_hint">example@gmail.com</string>
