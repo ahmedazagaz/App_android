@@ -107,7 +107,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                             mDialog.dismiss();
                             Toast.makeText(getApplicationContext(),"Registration Complete",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),HomeActivity.class));
+                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
 
                         }else {
                             mDialog.dismiss();
