@@ -27,7 +27,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Simplify the management of your budget and track your expenses with complete peace of mind."
+        android:text="Simplifiez la gestion de votre budget en suivant facilement vos dépenses"
         android:textColor="#6E6E6E"
         android:textSize="14sp"
         android:gravity="center"
