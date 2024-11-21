@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#E7FFF6">
+
+    <!-- Piggy bank icon -->
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/logo" />
+
+    <!-- App Name -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BudgetWise"
+        android:textColor="#00D09E"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <!-- Description Text -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simplify the management of your budget and track your expenses with complete peace of mind."
+        android:textColor="#6E6E6E"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp" />
+
+    <!-- Log In Button -->
+    <Button
+        android:id="@+id/btn_login"
+        style="@style/ButtonStyle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Log In"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btn_signup"
+        style="@style/ButtonStyle"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#CFF4E3"
+        android:text="Sign Up" />
+
+    <TextView
+        android:id="@+id/tv_forgot_password"
+        style="@style/LinkTextViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password?"
+        android:textStyle="bold"
+        android:textSize="14sp" />
+</LinearLayout>

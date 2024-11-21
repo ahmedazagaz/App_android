@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#00D09E"
-    tools:context=".MainActivity">
+    tools:context=".LaunchActivity">
 
     <TextView
         android:id="@+id/welcome_text"
