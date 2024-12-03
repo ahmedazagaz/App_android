@@ -24,11 +24,11 @@ import com.google.android.gms.tasks.Task;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText mEmail; // Champ de texte pour l'email
-    private EditText mPass;  // Champ de texte pour le mot de passe
-    private Button btnLogin; // Bouton pour se connecter
-    private TextView mForgotPassword; // Lien pour le mot de passe oublié
-    private TextView mSignup;         // Lien pour aller à l'inscription
+    private EditText mEmail;
+    private EditText mPass;
+    private Button btnLogin;
+    private TextView mForgotPassword;
+    private TextView mSignup;
 
     private FirebaseAuth mAuth;       // Objet FirebaseAuth pour gérer l'authentification
     private ProgressDialog mDialog;   // ProgressDialog pour afficher un message de chargement

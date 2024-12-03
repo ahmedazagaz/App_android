@@ -18,14 +18,13 @@ public class LaunchActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_launch);
 
-        // Apply insets to the main view
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Delay the transition to LoginActivity for 3 seconds
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
