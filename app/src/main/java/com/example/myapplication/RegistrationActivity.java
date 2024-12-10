@@ -4,87 +4,70 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
-//import android.widget.Button;
-//import android.widget.EditText;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    // Déclaration des éléments d'interface utilisateur
-
-    private EditText mFullName;
-    private EditText mEmail;
-    private EditText mPass;
+    private EditText mFullName, mEmail, mPass;
     private Button btnSignup;
     private TextView mSignin;
-
-    // Déclaration de l'objet ProgressDialog pour afficher un message de chargement
     private ProgressDialog mDialog;
-
-    // Déclaration de l'objet FirebaseAuth pour gérer l'authentification Firebase
     private FirebaseAuth mAuth;
+    private FirebaseFirestore fstore;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_registration);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
 
-        });
-
+        // Initialisation des composants Firebase
         mAuth = FirebaseAuth.getInstance();
+        fstore = FirebaseFirestore.getInstance();
 
-        mDialog=new ProgressDialog(this);
+        // Initialisation du ProgressDialog
+        mDialog = new ProgressDialog(this);
 
+        // Configuration de l'interface utilisateur
         registration();
-
     }
 
-    // Méthode pour configurer l'interface utilisateur et les actions d'inscription
-
     private void registration() {
-
         mFullName = findViewById(R.id.FullName_signup);
         mEmail = findViewById(R.id.Email_signup);
         mPass = findViewById(R.id.Password_signup);
         btnSignup = findViewById(R.id.btn_signup);
         mSignin = findViewById(R.id.login_here);
 
-        // Définir l'action du bouton d'inscription
-
+        // Action pour le bouton "Sign Up"
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                // Récupérer les valeurs des champs de texte
-
-                String FullName = mFullName.getText().toString();
+                String FullName = mFullName.getText().toString().trim();
                 String email = mEmail.getText().toString().trim();
                 String pass = mPass.getText().toString().trim();
 
-                // Vérifier si les champs est vide et afficher un message d'erreur
-
-                if (TextUtils.isEmpty((FullName))) {
+                // Validation des champs
+                if (TextUtils.isEmpty(FullName)) {
                     mFullName.setError("Name is required");
                     return;
                 }
@@ -96,38 +79,55 @@ public class RegistrationActivity extends AppCompatActivity {
                     mPass.setError("Password is required");
                     return;
                 }
+                if (pass.length() < 6) {
+                    mPass.setError("Password must be at least 6 characters");
+                    return;
+                }
 
-                // Afficher un message de chargement pendant la création de l'utilisateur
-                mDialog.setMessage("Registration in progress");
+                // Affichage du ProgressDialog
+                mDialog.setMessage("Registration in progress...");
                 mDialog.show();
 
-                mAuth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
+                // Création de l'utilisateur dans Firebase
+                mAuth.createUserWithEmailAndPassword(email, pass)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                mDialog.dismiss();
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(RegistrationActivity.this, "Registration Complete", Toast.LENGTH_SHORT).show();
+                                    userID = mAuth.getCurrentUser().getUid();
+                                    DocumentReference documentReference = fstore.collection("users").document(userID);
+                                    Map<String, Object> user = new HashMap<>();
+                                    user.put("Full Name", FullName);
+                                    user.put("Email", email);
 
-                        if  (task.isSuccessful()){
+                                    // Ajout des données à Firestore
+                                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Log.d("TAG", "onSuccess: User profile is created for " + userID);
+                                        }
+                                    });
 
-                            mDialog.dismiss();
-                            Toast.makeText(getApplicationContext(),"Registration Complete",Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-
-                        }else {
-                            mDialog.dismiss();
-                            Toast.makeText(getApplicationContext(),"Registration Failed",Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
+                                    // Redirection vers l'écran de connexion
+                                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                    finish();
+                                } else {
+                                    Toast.makeText(RegistrationActivity.this, "Registration Failed: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
             }
         });
 
-        // Définir l'action du lien "Sign In"
+        // Action pour le lien "Sign In"
         mSignin.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                finish();
             }
         });
     }
-
 }
