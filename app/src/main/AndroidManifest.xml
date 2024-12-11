@@ -33,6 +33,11 @@
         <activity
         android:name=".ProfileActivity"
         android:exported="true" />
+
+        <activity android:name=".EditProfileActivity"
+            android:exported="true"
+            />
+
         <activity
             android:name=".LoginActivity"
             android:exported="true" />

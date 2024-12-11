@@ -43,6 +43,8 @@ dependencies {
     androidTestImplementation libs.espresso.core
 
 
+    implementation 'androidx.appcompat:appcompat:1.6.1'  // Utiliser la dernière version
+
 
     // Import the BoM for the Firebase platform
 

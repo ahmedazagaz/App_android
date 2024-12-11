@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="50dp"
         android:gravity="center_vertical">
 
         <ImageView
@@ -60,13 +60,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center"
-            android:padding="30dp">
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/profile_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="30dp"
                 android:contentDescription="Profile Picture"
                 android:scaleType="centerCrop"
                  /> <!-- L'icône par défaut si aucune image n'est disponible -->
@@ -97,12 +97,15 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/edit_profile_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="12dp"
                 android:layout_marginBottom="8dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:background="?attr/selectableItemBackground"> <!-- Ajoute un effet de clic -->
+
                 <ImageView
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -117,6 +120,7 @@
                     android:layout_marginStart="16dp"
                     android:textColor="#093030" />
             </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
