@@ -21,4 +21,7 @@
     <string name="signin_text">Already have an account? Log In</string>
     <string name="Search_text">Search</string>
 
+
+    <string name="Profile_text">Profile</string>
+
 </resources>
