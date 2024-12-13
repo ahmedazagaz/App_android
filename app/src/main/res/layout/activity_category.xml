@@ -10,20 +10,39 @@
     tools:context=".category.CategoryActivity">
 
 
-    <TextView
-        android:id="@+id/welcome_text"
-        android:layout_width="wrap_content"
-        android:layout_marginLeft="40dp"
+    <!-- En-tête -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="50dp"
+        android:gravity="center_vertical">
 
-        android:textAlignment="center"
-        android:text="Welcome to Categories"
-        android:textColor="#000000"
-        android:textSize="32sp"
-        android:textStyle="bold"
-     />
+        <ImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back Icon" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Category"
+            android:textStyle="bold"
+            android:textColor="#093030"
+            android:textSize="25sp"
+            android:gravity="center" />
+
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_notification"
+            android:contentDescription="Notification Icon" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -1,20 +1,21 @@
 package com.example.myapplication.category;
 
 public class Category {
-    private String id; // ID unique
+    private String id; // Unique ID
     private String name;
-    private int iconResId; // Peut être une URL pour des icônes personnalisées dans Firebase
-    private boolean isMoreButton; // Indique si cette catégorie est un bouton spécial
+    private int iconResId; // Can be a URL for Firebase icons
+    private boolean isMoreButton;
+    private String userId; // ID of the user who owns this category
 
-    // Constructeur par défaut requis pour Firebase
     public Category() {
+        // Default constructor required for Firebase
     }
 
-    public Category( String name, int iconResId, boolean isMoreButton) {
-
+    public Category(String name, int iconResId, boolean isMoreButton, String userId) {
         this.name = name;
         this.iconResId = iconResId;
         this.isMoreButton = isMoreButton;
+        this.userId = userId;
     }
 
     public String getId() {
@@ -47,5 +48,13 @@ public class Category {
 
     public void setMoreButton(boolean moreButton) {
         isMoreButton = moreButton;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
