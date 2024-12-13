@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,6 +39,7 @@ public class ProfileActivity extends AppCompatActivity {
     private String userID; // ID de l'utilisateur connecté
     private TextView mUserIdTextView; // TextView pour afficher l'ID utilisateur
     private LinearLayout mEditProfileLayout; // LinearLayout pour "Edit Profile"
+    private LinearLayout mLogoutLayout; // LinearLayout pour "Logout"
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class ProfileActivity extends AppCompatActivity {
         mUserIdTextView = findViewById(R.id.profile_user_id);
         mProfileImageView = findViewById(R.id.profile_image);
         mEditProfileLayout = findViewById(R.id.edit_profile_layout);
+        mLogoutLayout = findViewById(R.id.logout_layout);
 
         // Configurer le clic sur le LinearLayout "Edit Profile"
         mEditProfileLayout.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +63,14 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        // Configurer le clic sur le LinearLayout "Logout"
+        mLogoutLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showLogoutDialog(); // Afficher la boîte de dialogue de déconnexion
             }
         });
 
@@ -150,5 +161,51 @@ public class ProfileActivity extends AppCompatActivity {
         canvas.drawBitmap(bitmap, 0, 0, paint);
 
         return output;
+    }
+
+    // Méthode pour afficher la boîte de dialogue de déconnexion
+    private void showLogoutDialog() {
+        // Créer le dialogue personnalisé
+        View dialogView = getLayoutInflater().inflate(R.layout.end_session_dialog, null);
+
+        // Initialiser les vues du dialogue
+        TextView dialogTitle = dialogView.findViewById(R.id.dialog_title);
+        TextView dialogMessage = dialogView.findViewById(R.id.dialog_message);
+        Button btnConfirmLogout = dialogView.findViewById(R.id.btn_confirm_logout);
+        Button btnCancelLogout = dialogView.findViewById(R.id.btn_cancel_logout);
+
+        // Configurer le dialogue
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setView(dialogView);
+        final android.app.AlertDialog dialog = builder.create();
+
+        // Bouton "Yes, End Session"
+        btnConfirmLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss(); // Fermer le dialogue
+                logoutUser(); // Appeler la méthode de déconnexion
+            }
+        });
+
+        // Bouton "Cancel"
+        btnCancelLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss(); // Fermer le dialogue
+            }
+        });
+
+        // Afficher le dialogue
+        dialog.show();
+    }
+
+    // Méthode pour gérer la déconnexion de l'utilisateur
+    private void logoutUser() {
+        FirebaseAuth.getInstance().signOut(); // Déconnexion de Firebase
+        Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Effacer l'historique des activités
+        startActivity(intent);
+        finish();
     }
 }
