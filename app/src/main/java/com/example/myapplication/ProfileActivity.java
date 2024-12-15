@@ -39,6 +39,9 @@ public class ProfileActivity extends AppCompatActivity {
     private String userID; // ID de l'utilisateur connecté
     private TextView mUserIdTextView; // TextView pour afficher l'ID utilisateur
     private LinearLayout mEditProfileLayout; // LinearLayout pour "Edit Profile"
+    private LinearLayout msecurityLayout; // LinearLayout pour "settings Profile"
+    private LinearLayout msettingsLayout; // LinearLayout pour "Edit Profile"
+
     private LinearLayout mLogoutLayout; // LinearLayout pour "Logout"
 
     @Override
@@ -55,16 +58,46 @@ public class ProfileActivity extends AppCompatActivity {
         mUserIdTextView = findViewById(R.id.profile_user_id);
         mProfileImageView = findViewById(R.id.profile_image);
         mEditProfileLayout = findViewById(R.id.edit_profile_layout);
+        msecurityLayout = findViewById(R.id.security_layout);
+        msettingsLayout = findViewById(R.id.settings_layout);
         mLogoutLayout = findViewById(R.id.logout_layout);
 
-        // Configurer le clic sur le LinearLayout "Edit Profile"
         mEditProfileLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
+
+                // Pass the current data to EditProfileActivity
+                intent.putExtra("userName", mNameTextView.getText().toString());
+                intent.putExtra("userId", mUserIdTextView.getText().toString());
+
+                startActivityForResult(intent, 1); // Use startActivityForResult to get updated data back
+            }
+        });
+
+
+
+
+        // Configurer le clic
+        msecurityLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Naviguer vers SecurityActivity
+                Intent intent = new Intent(ProfileActivity.this, SecurityActivity.class);
                 startActivity(intent);
             }
         });
+
+        // Configurer le clic
+        msettingsLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Naviguer vers SettingdActivity
+                Intent intent = new Intent(ProfileActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         // Configurer le clic sur le LinearLayout "Logout"
         mLogoutLayout.setOnClickListener(new View.OnClickListener() {
@@ -198,6 +231,26 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Afficher le dialogue
         dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            // Si la mise à jour a réussi, obtenir les données modifiées
+            String updatedName = data.getStringExtra("updatedName");
+            String updatedEmail = data.getStringExtra("updatedEmail");
+
+            if (updatedName != null && !updatedName.isEmpty()) {
+                mNameTextView.setText(updatedName);  // Mettre à jour le nom dans le TextView
+            }
+            if (updatedEmail != null && !updatedEmail.isEmpty()) {
+                // Mettre à jour l'email si nécessaire
+                // mEmailTextView.setText(updatedEmail);
+            }
+
+            Toast.makeText(ProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // Méthode pour gérer la déconnexion de l'utilisateur

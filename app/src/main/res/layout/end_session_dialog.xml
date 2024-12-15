@@ -2,18 +2,20 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="12dp"
-    android:background="@drawable/dialog_background">
+    android:padding="15dp"
+    android:background="@drawable/dialog_background"
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/dialog_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="End Session"
-        android:textSize="16sp"
+        android:textSize="20sp"
         android:textColor="#0E3E3E"
         android:layout_gravity="center_horizontal"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/dialog_message"
@@ -23,13 +25,23 @@
         android:layout_marginTop="8dp"
         android:layout_gravity="center_horizontal"
         android:textColor="#333333"
-        android:textSize="12sp" />
+        android:textSize="14sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/btn_confirm_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00D09E"
+            android:text="Yes, End Session"
+            android:textColor="#093030"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp" />
 
         <Button
             android:id="@+id/btn_cancel_logout"
@@ -38,14 +50,6 @@
             android:backgroundTint="#DFF7E2"
             android:text="Cancel"
             android:textColor="#093030"
-            android:layout_marginBottom="8dp" />
-
-        <Button
-            android:id="@+id/btn_confirm_logout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#00D09E"
-            android:text="Yes, End Session"
-            android:textColor="#093030" />
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>
