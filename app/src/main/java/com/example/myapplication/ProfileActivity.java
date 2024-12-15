@@ -67,20 +67,14 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(ProfileActivity.this, EditProfileActivity.class);
 
-                // Add the necessary data to the intent
+                // Pass the current data to EditProfileActivity
                 intent.putExtra("userName", mNameTextView.getText().toString());
                 intent.putExtra("userId", mUserIdTextView.getText().toString());
 
-                // Check if the profile image is available
-                Drawable drawable = mProfileImageView.getDrawable();
-                if (drawable instanceof BitmapDrawable) {
-                    Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-
-                }
-
-                startActivity(intent);
+                startActivityForResult(intent, 1); // Use startActivityForResult to get updated data back
             }
         });
+
 
 
 
@@ -237,6 +231,26 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Afficher le dialogue
         dialog.show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null) {
+            // Si la mise à jour a réussi, obtenir les données modifiées
+            String updatedName = data.getStringExtra("updatedName");
+            String updatedEmail = data.getStringExtra("updatedEmail");
+
+            if (updatedName != null && !updatedName.isEmpty()) {
+                mNameTextView.setText(updatedName);  // Mettre à jour le nom dans le TextView
+            }
+            if (updatedEmail != null && !updatedEmail.isEmpty()) {
+                // Mettre à jour l'email si nécessaire
+                // mEmailTextView.setText(updatedEmail);
+            }
+
+            Toast.makeText(ProfileActivity.this, "Profile updated successfully", Toast.LENGTH_SHORT).show();
+        }
     }
 
     // Méthode pour gérer la déconnexion de l'utilisateur
