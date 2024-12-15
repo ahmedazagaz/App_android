@@ -1,0 +1,6 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="ring">
+    <solid android:color="#E0E0E0" /> <!-- Couleur de fond -->
+    <stroke
+        android:width="8dp"
+        android:color="#00A6FF" /> <!-- Couleur de progression -->
+</shape>
