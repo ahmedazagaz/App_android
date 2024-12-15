@@ -1,6 +1,7 @@
 package com.example.myapplication.category;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.R;
+import com.example.myapplication.expense.ExpenseListActivity;
+import com.example.myapplication.saving.SavingActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -60,6 +63,24 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
                 Toast.makeText(context, "Selected: " + category.getName(), Toast.LENGTH_SHORT).show();
             }
         });
+        holder.itemView.setOnClickListener(v -> {
+            if (category.isMoreButton()) {
+                // Show dialog to add a new category
+                showAddCategoryDialog();
+            } else if (category.getName().equals("Saving")) {
+                // Navigate to SavingActivity when the category is "Saving"
+                Intent intent = new Intent(context, SavingActivity.class);
+                intent.putExtra("category_name", category.getName()); // Optional: Pass category name if needed
+                context.startActivity(intent);
+            } else {
+                // Navigate to ExpenseListActivity for other categories
+                Intent intent = new Intent(context, ExpenseListActivity.class);
+                intent.putExtra("category_name", category.getName());
+                context.startActivity(intent);
+            }
+        });
+
+
     }
 
     private void loadCategories() {

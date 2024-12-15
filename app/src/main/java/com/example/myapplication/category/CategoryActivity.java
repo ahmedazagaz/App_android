@@ -38,6 +38,9 @@ public class CategoryActivity extends AppCompatActivity {
         firestore = FirebaseFirestore.getInstance();
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
+        // Ajout des catégories par défaut
+        addDefaultCategories();
+        addDefaultCategoriesIfNeeded();
         // Initialisation de la grille des catégories
         categoryGrid = findViewById(R.id.category_grid);
         categoryGrid.setLayoutManager(new GridLayoutManager(this, 3)); // Grille de 3 colonnes
@@ -80,10 +83,47 @@ public class CategoryActivity extends AppCompatActivity {
             return false;
         });
     }
+    private void addDefaultCategoriesIfNeeded() {
+        firestore.collection("users")
+                .document(userId)
+                .collection("categories")
+                .get()
+                .addOnSuccessListener(queryDocumentSnapshots -> {
+                    if (queryDocumentSnapshots.isEmpty()) {
+                        // Ajouter les catégories par défaut
+                        addDefaultCategories();
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Failed to check default categories: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+    }
 
+    private void addDefaultCategories() {
+        List<Category> defaultCategories = new ArrayList<>();
+        defaultCategories.add(new Category("Entertainment", R.drawable.ic_entertainment, false, userId));
+        defaultCategories.add(new Category("Food", R.drawable.ic_food, false, userId));
+        defaultCategories.add(new Category("Transport", R.drawable.ic_transport, false, userId));
+        defaultCategories.add(new Category("Medicine", R.drawable.ic_medicine, false, userId));
+        defaultCategories.add(new Category("Groceries", R.drawable.ic_groceries, false, userId));
+        defaultCategories.add(new Category("Rent", R.drawable.ic_rent, false, userId));
+        defaultCategories.add(new Category("Gifts", R.drawable.ic_gifts, false, userId));
+        defaultCategories.add(new Category("Saving", R.drawable.ic_saving, false, userId));
+
+
+        for (Category category : defaultCategories) {
+            firestore.collection("users")
+                    .document(userId)
+                    .collection("categories")
+                    .document(category.getName()) // Utiliser le nom comme ID unique
+                    .set(category)
+                    .addOnFailureListener(e -> {
+                        Toast.makeText(this, "Failed to add category: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
 
     private void loadCategories() {
-        // Charger les catégories spécifiques à l'utilisateur connecté
         firestore.collection("users")
                 .document(userId)
                 .collection("categories")
@@ -93,12 +133,10 @@ public class CategoryActivity extends AppCompatActivity {
 
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                         Category category = doc.toObject(Category.class);
-                        if (!category.isMoreButton()) { // Ignorer les anciens boutons "More" (si présents)
-                            categoryList.add(category);
-                        }
+                        categoryList.add(category); // Ajouter les catégories depuis Firestore
                     }
 
-                    // Vérifier si le bouton "More" est déjà présent ; sinon, l'ajouter
+                    // Ajouter le bouton "More" à la fin
                     boolean hasMoreButton = false;
                     for (Category category : categoryList) {
                         if (category.isMoreButton()) {
@@ -108,15 +146,35 @@ public class CategoryActivity extends AppCompatActivity {
                     }
 
                     if (!hasMoreButton) {
-                        // Ajouter le bouton "More" à la fin
                         categoryList.add(new Category("More", R.drawable.ic_more, true, userId));
                     }
 
                     // Notifier l'adaptateur pour mettre à jour l'interface utilisateur
                     categoryAdapter.notifyDataSetChanged();
                 })
-                .addOnFailureListener(e ->
-                        Toast.makeText(CategoryActivity.this, "Failed to load categories", Toast.LENGTH_SHORT).show()
-                );
+                .addOnFailureListener(e -> Toast.makeText(CategoryActivity.this, "Failed to load categories", Toast.LENGTH_SHORT).show());
+    }
+
+    private int getDefaultCategoryIcon(String categoryName) {
+        switch (categoryName) {
+            case "Food":
+                return R.drawable.ic_food;
+            case "Transport":
+                return R.drawable.ic_transport;
+            case "Medicine":
+                return R.drawable.ic_medicine;
+            case "Groceries":
+                return R.drawable.ic_groceries;
+            case "Rent":
+                return R.drawable.ic_rent;
+            case "Gifts":
+                return R.drawable.ic_gifts;
+            case "Saving":
+                return R.drawable.ic_saving;
+            case "Entertainment":
+                return R.drawable.ic_entertainment;
+            default:
+                return R.drawable.ic_placeholder;
+        }
     }
 }

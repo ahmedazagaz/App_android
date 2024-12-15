@@ -16,8 +16,18 @@
         >
 
         <activity
+            android:name=".saving.SavingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".expense.AddExpenseActivity"
+            android:exported="true" />
+        <activity
+            android:name=".expense.ExpenseListActivity"
+            android:exported="true" />
+        <activity
             android:name=".category.CategoryActivity"
             android:exported="true" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true" />

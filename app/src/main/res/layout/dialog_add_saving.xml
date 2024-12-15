@@ -1,20 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="#FFFFFF">
 
     <EditText
-        android:id="@+id/category_name_input"
+        android:id="@+id/saving_name_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Category Name"
-        android:inputType="text" />
+        android:hint="Enter saving name"
+        android:padding="12dp"/>
 
     <Button
-        android:id="@+id/add_category_button"
+        android:id="@+id/add_saving_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:text="Add Category" />
+        android:text="Add Saving"
+        android:padding="12dp"/>
 </LinearLayout>
