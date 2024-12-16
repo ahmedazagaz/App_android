@@ -12,11 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.HomeActivity;
-import com.example.myapplication.ProfileActivity;
+import com.example.myapplication.Home.HomeActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.SearchActivity;
-import com.example.myapplication.TransactionActivity;
+import com.example.myapplication.Search.SearchActivity;
+import com.example.myapplication.Transaction.TransactionActivity;
 import com.example.myapplication.category.CategoryActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;

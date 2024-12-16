@@ -1,11 +1,21 @@
-package com.example.myapplication;
+package com.example.myapplication.Home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.NotificationActivity;
+import com.example.myapplication.R;
 import com.example.myapplication.category.CategoryActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import com.example.myapplication.Profile.ProfileActivity;
+
+import com.example.myapplication.Transaction.TransactionActivity;
+
+import com.example.myapplication.Search.SearchActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -13,6 +23,16 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+
+        ImageView notificationIcon = findViewById(R.id.notification_icon);
+        notificationIcon.setOnClickListener(v -> {
+            // Démarrer l'activité de notification
+            Intent notificationIntent = new Intent(HomeActivity.this, NotificationActivity.class);
+            startActivity(notificationIntent);
+        });
+
+
 
         // Configuration de la BottomNavigationView
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);

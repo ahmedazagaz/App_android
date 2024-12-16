@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Login;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,10 +13,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.myapplication.Home.HomeActivity;
+import com.example.myapplication.R;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import com.example.myapplication.Registration.RegistrationActivity;
 
 public class LoginActivity extends AppCompatActivity {
 

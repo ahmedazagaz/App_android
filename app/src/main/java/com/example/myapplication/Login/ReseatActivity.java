@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Login;
 
 import android.app.ProgressDialog;
 
@@ -18,10 +18,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.myapplication.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import com.google.firebase.auth.FirebaseAuth;
+
+import com.example.myapplication.Registration.RegistrationActivity;
 
 public class ReseatActivity extends AppCompatActivity {
 

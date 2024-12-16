@@ -7,7 +7,7 @@
     android:background="#00D09E"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".Home.HomeActivity">
 
     <!-- Header Section -->
     <RelativeLayout
@@ -27,7 +27,7 @@
             android:contentDescription="Notification Icon"
             android:src="@drawable/ic_notification" />
 
-    <!-- Welcome Text Overlay -->
+        <!-- Welcome Text Overlay -->
 
         <!-- Subtitle -->
         <TextView
@@ -43,8 +43,6 @@
             android:textStyle="bold" />
 
     </RelativeLayout>
-
-
 
     <!-- Total Balance and Total Expense Section -->
     <LinearLayout
@@ -149,21 +147,122 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- Bottom Navigation -->
+
     <ScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="40dp"
-        android:layout_below="@id/header"
         android:layout_above="@id/bottom_navigation"
-        android:fillViewport="true"
-        android:background="@drawable/frame">
+        android:layout_below="@id/header"
+        android:layout_marginTop="40dp"
+        android:layout_weight="1"
+        android:background="@drawable/frame"
+        android:fillViewport="true">
+
+        <!-- Container for Savings and Revenue -->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:elevation="2dp">
+
+            <!-- Background Rectangle -->
+
+            <!-- Content Inside the Rectangle -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Left Section: Savings On Goals -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_car"
+                        android:contentDescription="Car Icon" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Savings On Goals"
+                        android:textColor="#052224"
+                        android:textStyle="bold"
+                        android:layout_marginTop="8dp" />
+                </LinearLayout>
+
+                <!-- Center Divider -->
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#FFFFFF" />
+
+                <!-- Right Section: Revenue Last Week and Food -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <!-- Revenue -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Revenue Last Week"
+                        android:textColor="#093030"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="$4,000.00"
+                        android:textColor="#000000"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Separator -->
+                    <View
+                        android:layout_width="60dp"
+                        android:layout_height="2dp"
+                        android:layout_marginVertical="8dp"
+                        android:background="#FFFFFF" />
+
+                    <!-- Food Expenses -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Food Last Week"
+                        android:textColor="#093030"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="- $100.00"
+                        android:textColor="#1E88E5"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="370dp"
+                android:layout_height="190dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/rect"/>
+
+        </FrameLayout>
     </ScrollView>
 
-
-
-    <!-- Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"

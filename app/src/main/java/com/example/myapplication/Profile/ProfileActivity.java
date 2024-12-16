@@ -1,4 +1,4 @@
-package com.example.myapplication;
+package com.example.myapplication.Profile;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,6 +23,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.Home.HomeActivity;
+import com.example.myapplication.Login.LoginActivity;
+import com.example.myapplication.NotificationActivity;
+import com.example.myapplication.R;
+import com.example.myapplication.Search.SearchActivity;
+import com.example.myapplication.Transaction.TransactionActivity;
 import com.example.myapplication.category.CategoryActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -51,6 +57,13 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        ImageView notificationIcon = findViewById(R.id.notification_icon);
+        notificationIcon.setOnClickListener(v -> {
+            // Démarrer l'activité de notification
+            Intent notificationIntent = new Intent(ProfileActivity.this, NotificationActivity.class);
+            startActivity(notificationIntent);
+        });
+
         // Initialisation de FirebaseAuth et Firestore
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -63,6 +76,15 @@ public class ProfileActivity extends AppCompatActivity {
         msecurityLayout = findViewById(R.id.security_layout);
         msettingsLayout = findViewById(R.id.settings_layout);
         mLogoutLayout = findViewById(R.id.logout_layout);
+
+        ImageView backIcon = findViewById(R.id.back_icon); // ID défini dans le fichier XML
+
+        // Action sur le bouton "Retour"
+        backIcon.setOnClickListener(view -> {
+            Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish(); // Facultatif : ferme l'activité actuelle
+        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.profile); // Marquer le profil comme sélectionné
@@ -104,11 +126,9 @@ public class ProfileActivity extends AppCompatActivity {
                 intent.putExtra("userId", mUserIdTextView.getText().toString());
 
                 startActivityForResult(intent, 1); // Use startActivityForResult to get updated data back
+
             }
         });
-
-
-
 
         // Configurer le clic
         msecurityLayout.setOnClickListener(new View.OnClickListener() {
