@@ -23,8 +23,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.category.CategoryActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -61,6 +63,36 @@ public class ProfileActivity extends AppCompatActivity {
         msecurityLayout = findViewById(R.id.security_layout);
         msettingsLayout = findViewById(R.id.settings_layout);
         mLogoutLayout = findViewById(R.id.logout_layout);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.profile); // Marquer le profil comme sélectionné
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            // Navigation par conditions if-else
+            Intent intent = null;
+
+            if (item.getItemId() == R.id.homes) {
+                intent = new Intent(ProfileActivity.this, HomeActivity.class);
+            } else if (item.getItemId() == R.id.search) {
+                intent = new Intent(ProfileActivity.this, SearchActivity.class);
+            } else if (item.getItemId() == R.id.transaction) {
+                intent = new Intent(ProfileActivity.this, TransactionActivity.class);
+            } else if (item.getItemId() == R.id.category) {
+                intent = new Intent(ProfileActivity.this, CategoryActivity.class);
+            } else if (item.getItemId() == R.id.profile) {
+                // Déjà sur cette activité, aucun changement nécessaire
+                return true;
+            }
+
+            if (intent != null) {
+                startActivity(intent);
+                overridePendingTransition(0, 0); // Désactiver les animations pour un comportement fluide
+                return true;
+            }
+
+            return false;
+        });
 
         mEditProfileLayout.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,5 +1,6 @@
 package com.example.myapplication.saving;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.HomeActivity;
+import com.example.myapplication.ProfileActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.SearchActivity;
+import com.example.myapplication.TransactionActivity;
+import com.example.myapplication.category.CategoryActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -32,6 +39,39 @@ public class SavingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saving);
 
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.profile); // Marquer le profil comme sélectionné
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            // Navigation par conditions if-else
+            Intent intent = null;
+
+            if (item.getItemId() == R.id.homes) {
+                intent = new Intent(SavingActivity.this, HomeActivity.class);
+            } else if (item.getItemId() == R.id.search) {
+                intent = new Intent(SavingActivity.this, SearchActivity.class);
+            } else if (item.getItemId() == R.id.transaction) {
+                intent = new Intent(SavingActivity.this, TransactionActivity.class);
+            } else if (item.getItemId() == R.id.category) {
+                intent = new Intent(SavingActivity.this, CategoryActivity.class);
+            } else if (item.getItemId() == R.id.profile) {
+                // Déjà sur cette activité, aucun changement nécessaire
+                return true;
+            }
+
+            if (intent != null) {
+                startActivity(intent);
+                overridePendingTransition(0, 0); // Désactiver les animations pour un comportement fluide
+                return true;
+            }
+
+            return false;
+        });
+
+
+
         // Initialisation Firestore et Firebase Auth
         firestore = FirebaseFirestore.getInstance();
         userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -49,6 +89,9 @@ public class SavingActivity extends AppCompatActivity {
 
         // Ajouter les savings par défaut si nécessaires
         addDefaultSavingsIfNeeded();
+
+
+
     }
 
     private void addDefaultSavingsIfNeeded() {

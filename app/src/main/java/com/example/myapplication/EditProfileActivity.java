@@ -19,6 +19,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.bumptech.glide.Glide;
+import com.example.myapplication.category.CategoryActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -73,6 +75,37 @@ public class EditProfileActivity extends AppCompatActivity {
 
         // Mettre à jour le profil
         mUpdateProfileButton.setOnClickListener(v -> updateProfile());
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.profile); // Marquer le profil comme sélectionné
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            // Navigation par conditions if-else
+            Intent intent = null;
+
+            if (item.getItemId() == R.id.homes) {
+                intent = new Intent(EditProfileActivity.this, HomeActivity.class);
+            } else if (item.getItemId() == R.id.search) {
+                intent = new Intent(EditProfileActivity.this, SearchActivity.class);
+            } else if (item.getItemId() == R.id.transaction) {
+                intent = new Intent(EditProfileActivity.this, TransactionActivity.class);
+            } else if (item.getItemId() == R.id.category) {
+                intent = new Intent(EditProfileActivity.this, CategoryActivity.class);
+            } else if (item.getItemId() == R.id.profile) {
+                // Déjà sur cette activité, aucun changement nécessaire
+                return true;
+            }
+
+            if (intent != null) {
+                startActivity(intent);
+                overridePendingTransition(0, 0); // Désactiver les animations pour un comportement fluide
+                return true;
+            }
+
+            return false;
+        });
     }
 
     private void loadUserData() {

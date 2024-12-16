@@ -10,10 +10,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.myapplication.HomeActivity;
 import com.example.myapplication.R;
+import com.example.myapplication.SearchActivity;
+import com.example.myapplication.TransactionActivity;
+import com.example.myapplication.category.CategoryActivity;
 import com.example.myapplication.expense.AddExpenseActivity;
 import com.example.myapplication.expense.Expense;
 import com.example.myapplication.expense.ExpenseAdapter;
+import com.example.myapplication.saving.SavingActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -34,6 +40,39 @@ public class ExpenseListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense_list);
+
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.profile); // Marquer le profil comme sélectionné
+
+        bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            // Navigation par conditions if-else
+            Intent intent = null;
+
+            if (item.getItemId() == R.id.homes) {
+                intent = new Intent(ExpenseListActivity.this, HomeActivity.class);
+            } else if (item.getItemId() == R.id.search) {
+                intent = new Intent(ExpenseListActivity.this, SearchActivity.class);
+            } else if (item.getItemId() == R.id.transaction) {
+                intent = new Intent(ExpenseListActivity.this, TransactionActivity.class);
+            } else if (item.getItemId() == R.id.category) {
+                intent = new Intent(ExpenseListActivity.this, CategoryActivity.class);
+            } else if (item.getItemId() == R.id.profile) {
+                // Déjà sur cette activité, aucun changement nécessaire
+                return true;
+            }
+
+            if (intent != null) {
+                startActivity(intent);
+                overridePendingTransition(0, 0); // Désactiver les animations pour un comportement fluide
+                return true;
+            }
+
+            return false;
+        });
+
+
 
         // Récupérer le nom de la catégorie sélectionnée
         categoryName = getIntent().getStringExtra("category_name");
