@@ -12,6 +12,13 @@
         android:layout_height="wrap_content"
         android:hint="Enter saving name"
         android:padding="12dp"/>
+    <EditText
+        android:id="@+id/saving_goal_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter saving goalAmount"
+        android:padding="12dp"/>
+
 
     <Button
         android:id="@+id/add_saving_button"

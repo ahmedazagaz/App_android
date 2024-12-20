@@ -48,7 +48,6 @@
         android:layout_height="38dp"
         android:gravity="center"
         android:text="Amount"
-
         android:textColor="#329DFD"
         android:textSize="16sp" />
 </LinearLayout>

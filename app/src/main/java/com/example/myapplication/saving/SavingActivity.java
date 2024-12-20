@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.HomeActivity;
-import com.example.myapplication.ProfileActivity;
 import com.example.myapplication.R;
 import com.example.myapplication.SearchActivity;
 import com.example.myapplication.TransactionActivity;
@@ -39,13 +38,10 @@ public class SavingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saving);
 
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.profile); // Marquer le profil comme sélectionné
+        bottomNavigationView.setSelectedItemId(R.id.profile);
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
-
-            // Navigation par conditions if-else
             Intent intent = null;
 
             if (item.getItemId() == R.id.homes) {
@@ -57,20 +53,16 @@ public class SavingActivity extends AppCompatActivity {
             } else if (item.getItemId() == R.id.category) {
                 intent = new Intent(SavingActivity.this, CategoryActivity.class);
             } else if (item.getItemId() == R.id.profile) {
-                // Déjà sur cette activité, aucun changement nécessaire
                 return true;
             }
 
             if (intent != null) {
                 startActivity(intent);
-                overridePendingTransition(0, 0); // Désactiver les animations pour un comportement fluide
+                overridePendingTransition(0, 0);
                 return true;
             }
-
             return false;
         });
-
-
 
         // Initialisation Firestore et Firebase Auth
         firestore = FirebaseFirestore.getInstance();
@@ -80,18 +72,12 @@ public class SavingActivity extends AppCompatActivity {
         savingGrid = findViewById(R.id.saving_grid);
         savingGrid.setLayoutManager(new GridLayoutManager(this, 3));
 
-        // Initialisation de l'adaptateur
         savingAdapter = new SavingAdapter(this, savingList);
         savingGrid.setAdapter(savingAdapter);
 
         // Charger les savings depuis Firebase
         loadSavings();
-
-        // Ajouter les savings par défaut si nécessaires
         addDefaultSavingsIfNeeded();
-
-
-
     }
 
     private void addDefaultSavingsIfNeeded() {
@@ -101,7 +87,6 @@ public class SavingActivity extends AppCompatActivity {
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     if (queryDocumentSnapshots.isEmpty()) {
-                        // Ajouter les savings par défaut
                         addDefaultSavings();
                     }
                 })
@@ -110,16 +95,16 @@ public class SavingActivity extends AppCompatActivity {
 
     private void addDefaultSavings() {
         List<Saving> defaultSavings = new ArrayList<>();
-        defaultSavings.add(new Saving("Travel", R.drawable.ic_travel));
-        defaultSavings.add(new Saving("New House", R.drawable.ic_house));
-        defaultSavings.add(new Saving("Car", R.drawable.ic_car));
-        defaultSavings.add(new Saving("Wedding", R.drawable.ic_wedding));
+        defaultSavings.add(new Saving("Travel", R.drawable.ic_travel, 1000));
+        defaultSavings.add(new Saving("New House", R.drawable.ic_house, 2000));
+        defaultSavings.add(new Saving("Car", R.drawable.car, 1500));
+        defaultSavings.add(new Saving("Wedding", R.drawable.ic_wedding, 5000));
 
         for (Saving saving : defaultSavings) {
             firestore.collection("users")
                     .document(userId)
                     .collection("savings")
-                    .document(saving.getName()) // Utiliser le nom comme ID unique
+                    .document(saving.getName())
                     .set(saving)
                     .addOnFailureListener(e -> {
                         Toast.makeText(this, "Failed to add saving: " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -133,14 +118,13 @@ public class SavingActivity extends AppCompatActivity {
                 .collection("savings")
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
-                    savingList.clear(); // Effacer les anciennes données avant d'ajouter les nouvelles
+                    savingList.clear();
 
                     for (QueryDocumentSnapshot doc : queryDocumentSnapshots) {
                         Saving saving = doc.toObject(Saving.class);
                         savingList.add(saving);
                     }
 
-                    // Ajouter le bouton "More" à la fin
                     boolean hasMoreButton = false;
                     for (Saving saving : savingList) {
                         if (saving.getName().equals("More")) {
@@ -150,10 +134,9 @@ public class SavingActivity extends AppCompatActivity {
                     }
 
                     if (!hasMoreButton) {
-                        savingList.add(new Saving("More", R.drawable.ic_more));
+                        savingList.add(new Saving("More", R.drawable.ic_more, 0));
                     }
 
-                    // Notifier l'adaptateur pour mettre à jour l'interface utilisateur
                     savingAdapter.notifyDataSetChanged();
                 })
                 .addOnFailureListener(e -> Toast.makeText(SavingActivity.this, "Failed to load savings", Toast.LENGTH_SHORT).show());
@@ -166,12 +149,16 @@ public class SavingActivity extends AppCompatActivity {
         builder.setView(dialogView);
 
         EditText savingNameInput = dialogView.findViewById(R.id.saving_name_input);
+        EditText goalInput = dialogView.findViewById(R.id.saving_goal_input);  // EditText pour le goal
 
         builder.setPositiveButton("Add", (dialog, which) -> {
             String savingName = savingNameInput.getText().toString().trim();
-            if (!savingName.isEmpty()) {
-                // Ajouter un nouveau saving dans Firestore
-                Saving newSaving = new Saving(savingName, R.drawable.ic_placeholder);
+            String goalText = goalInput.getText().toString().trim();
+
+            if (!savingName.isEmpty() && !goalText.isEmpty()) {
+                double goal = Double.parseDouble(goalText);
+                Saving newSaving = new Saving(savingName, R.drawable.ic_placeholder, goal);
+
                 firestore.collection("users")
                         .document(userId)
                         .collection("savings")
@@ -184,7 +171,7 @@ public class SavingActivity extends AppCompatActivity {
                         })
                         .addOnFailureListener(e -> Toast.makeText(this, "Failed to add saving: " + e.getMessage(), Toast.LENGTH_SHORT).show());
             } else {
-                Toast.makeText(this, "Saving name cannot be empty!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Saving name and goal cannot be empty!", Toast.LENGTH_SHORT).show();
             }
         });
 

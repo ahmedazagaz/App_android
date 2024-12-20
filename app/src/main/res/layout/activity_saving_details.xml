@@ -1,13 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#00D09E"
-    tools:context=".saving.SavingActivity">
+    tools:context=".saving.SavingDetailsActivity">
 
     <!-- En-tête -->
     <LinearLayout
@@ -39,26 +37,63 @@
             android:layout_height="30dp"
             android:src="@drawable/ic_notification"
             android:contentDescription="Notification Icon" />
-
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="40dp"
-        android:background="@drawable/frame"
+        android:orientation="vertical"
+
+        android:background="@drawable/frame">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- RecyclerView pour afficher les catégories de savings -->
-        <androidx.recyclerview.widget.RecyclerView
-             android:id="@+id/saving_grid"
+        <ScrollView
+            android:id="@+id/scroll_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="Grid of saving categories"
-            android:scrollbars="vertical" />
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+                <include
+                    android:id="@+id/saving_detail_section"
+                    layout="@layout/item_saving_detail" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/saves_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="333dp"
+                    android:clipToPadding="false"
+                    android:padding="16dp" />
+            </LinearLayout>
+        </ScrollView>
+
     </LinearLayout>
 
+    <!-- Button fixé en bas -->
+    <Button
+        android:id="@+id/btn_add_saving"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#00D09E"
+        android:text="Add Savings"
+        android:textColor="#FFFFFF" />
+
+    </LinearLayout>
     <!-- BottomNavigationView pour la navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -67,5 +102,4 @@
         android:background="#DFF7E2"
         app:itemTextColor="@android:color/transparent"
         app:menu="@menu/bottom_nav_menu" />
-
 </LinearLayout>

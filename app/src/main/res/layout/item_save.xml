@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/saving_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/placeholder"
+        android:src="@drawable/car" />
+
+    <LinearLayout
+        android:layout_width="201dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/save_name"
+            android:layout_width="155dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Save Name"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/save_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Message"
+            android:textColor="#329DFD"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/save_date"
+            android:layout_width="201dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textColor="#888"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/save_amount"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:text="Amount"
+        android:textColor="#329DFD"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

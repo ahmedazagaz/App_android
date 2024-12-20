@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="#00D09E"
-    tools:context=".expense.AddExpenseActivity">
+    tools:context=".saving.AddSavingActivity">
 
     <LinearLayout
         android:id="@+id/header"
@@ -28,7 +28,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Add Expense"
+            android:text="Add Saving"
             android:textStyle="bold"
             android:textColor="#093030"
             android:textSize="20sp"
@@ -47,10 +47,8 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_marginTop="40dp"
-        android:layout_below="@id/header"
-        android:layout_above="@id/bottom_navigation"
-        android:fillViewport="true"
-        android:background="@drawable/frame">
+        android:background="@drawable/frame"
+        android:fillViewport="true">
 
         <LinearLayout
             android:id="@+id/inner_layout"
@@ -62,117 +60,99 @@
 
             <!-- Title Field -->
             <TextView
-                android:id="@+id/expense_title_label"
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"
-                android:text="Expense Title" />
+                style="@style/LabelTextStyle"
+                android:text="Saving Title" />
 
             <EditText
-                android:id="@+id/expense_title"
-                style="@style/EditTextStyle"
+                android:id="@+id/saving_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="Enter Expense Title" />
+                style="@style/EditTextStyle"
+                android:hint="Enter Saving Title" />
 
             <!-- Message Field -->
             <TextView
-                android:id="@+id/expense_message_label"
                 android:layout_width="match_parent"
-                style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"
-                android:text="Expense Message" />
+                style="@style/LabelTextStyle"
+                android:text="Saving Message" />
 
             <EditText
-                android:id="@+id/expense_message"
-                style="@style/EditTextStyle"
+                android:id="@+id/saving_message"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="Enter Expense Message"
+                style="@style/EditTextStyle"
+                android:hint="Enter Saving Message"
                 android:inputType="textMultiLine" />
-
-            <!-- Category Field -->
-            <TextView
-                android:id="@+id/category_label"
-                style="@style/LabelTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="200dp"
-                android:text="Category" />
-
-            <Spinner
-                android:id="@+id/category_spinner"
-                style="@style/SpinnerStyle"
-                android:layout_width="328dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="17dp" />
-
-            <!-- Amount Field -->
-            <TextView
-                android:id="@+id/expense_amount_label"
-                style="@style/LabelTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Amount" />
-
-            <EditText
-                android:id="@+id/expense_amount"
-                style="@style/EditTextStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="Enter Amount"
-                android:inputType="numberDecimal" />
 
             <!-- Date Field -->
             <TextView
-                android:id="@+id/expense_date_label"
                 android:layout_width="match_parent"
-                style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"
-                android:text="Expense Date" />
+                style="@style/LabelTextStyle"
+                android:text="Date" />
 
             <EditText
-                android:id="@+id/expense_date"
-                style="@style/EditTextStyle"
+                android:id="@+id/saving_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
+                style="@style/EditTextStyle"
                 android:hint="Select Date"
                 android:focusable="false"
                 android:clickable="true" />
 
-            <!-- Time Field -->
+            <!-- Category Field -->
             <TextView
-                android:id="@+id/expense_time_label"
                 android:layout_width="match_parent"
-                style="@style/LabelTextStyle"
                 android:layout_height="wrap_content"
-                android:text="Expense Time" />
+                style="@style/LabelTextStyle"
+                android:text="Saving type" />
+
+            <Spinner
+                android:id="@+id/saving_category_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/SpinnerStyle" />
+
+            <!-- Saved Amount Field -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/LabelTextStyle"
+                android:text="Saved Amount" />
 
             <EditText
-                android:id="@+id/expense_time"
-                style="@style/EditTextStyle"
+                android:id="@+id/saved_amount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:hint="Select Time"
-                android:focusable="false"
-                android:clickable="true" />
+                style="@style/EditTextStyle"
+                android:hint="Enter Saved Amount"
+                android:inputType="numberDecimal" />
+
+            <!-- Saving Goal Field -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/LabelTextStyle"
+                android:text="Saving Goal" />
+
+            <EditText
+                android:id="@+id/saving_goal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/EditTextStyle"
+                android:hint="Enter Saving Goal"
+                android:inputType="numberDecimal" />
 
             <!-- Submit Button -->
             <Button
-                android:id="@+id/submit_expense_button"
-                style="@style/ButtonStyle"
+                android:id="@+id/submit_saving_button"
                 android:layout_width="168dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:text="Add Expense" />
-
+                style="@style/ButtonStyle"
+                android:text="Add Saving" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

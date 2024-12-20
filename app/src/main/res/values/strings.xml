@@ -24,4 +24,11 @@
 
     <string name="Profile_text">Profile</string>
 
+
+    <string name="goal_label">Goal: $%1$s</string>
+    <string name="saved_label">Saved: $%1$s</string>
+    <string name="error_loading_details">Error loading saving details</string>
+    <string name="error_label">Error</string>
+    <string name="amount_format">Amount: %s</string>
+
 </resources>
