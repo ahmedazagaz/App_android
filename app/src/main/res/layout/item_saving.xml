@@ -12,7 +12,7 @@
         android:id="@+id/saving_icon"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/car" />
+        android:src="@drawable/ic_car" />
 
     <TextView
         android:id="@+id/saving_name"

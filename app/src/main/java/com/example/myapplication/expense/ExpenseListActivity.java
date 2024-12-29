@@ -10,15 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.HomeActivity;
+import com.example.myapplication.Home.HomeActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.SearchActivity;
-import com.example.myapplication.TransactionActivity;
+import com.example.myapplication.Search.SearchActivity;
+import com.example.myapplication.Transaction.TransactionActivity;
 import com.example.myapplication.category.CategoryActivity;
-import com.example.myapplication.expense.AddExpenseActivity;
-import com.example.myapplication.expense.Expense;
-import com.example.myapplication.expense.ExpenseAdapter;
-import com.example.myapplication.saving.SavingActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;

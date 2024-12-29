@@ -1,0 +1,119 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#00D09E"
+    tools:context=".NotificationActivity">
+
+    <!-- En-tête -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="50dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/back_icon"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back Icon" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Notification"
+            android:textStyle="bold"
+            android:textColor="#093030"
+            android:textSize="20sp"
+            android:gravity="center" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_notification"
+            android:contentDescription="Notification Icon" />
+
+    </LinearLayout>
+
+
+
+    <!-- Contenu principal -->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="40dp"
+        android:layout_below="@id/header"
+        android:layout_above="@id/bottom_navigation"
+        android:fillViewport="true"
+        android:background="@drawable/frame">
+
+        <!-- Contenu ici -->
+
+        <!-- Reminder Section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:layout_marginTop="30dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/reminder_icon"
+                android:contentDescription="Reminder Icon"
+                android:layout_marginEnd="10dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reminder!"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="#093030" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Set up your automatic savings to meet your savings goal..."
+                    android:textSize="14sp"
+                    android:textColor="#093030" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="17:00 - April 24"
+                android:textSize="12sp"
+                android:textColor="#00D09E" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+    <!-- BottomNavigationView -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:background="#DFF7E2"
+        app:itemTextColor="@android:color/transparent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</RelativeLayout>

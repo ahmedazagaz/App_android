@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#00D09E"
-    tools:context=".SettingsActivity">
+    tools:context=".Profile.SettingsActivity">
 
     <!-- En-tête -->
     <LinearLayout
@@ -16,10 +16,11 @@
         android:gravity="center_vertical">
 
         <ImageView
-            android:layout_width="18dp"
-            android:layout_height="18dp"
-            android:src="@drawable/ic_back"
-            android:contentDescription="Back Icon" />
+            android:id="@+id/back_icon"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:contentDescription="Back Icon"
+            android:src="@drawable/ic_back" />
 
         <TextView
             android:layout_width="0dp"
@@ -58,6 +59,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="150dp"
             android:orientation="vertical"
             android:gravity="center"
             android:padding="20dp">

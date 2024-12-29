@@ -45,34 +45,39 @@
             android:name=".MainActivity"
             android:exported="true" />
         <activity
-            android:name=".ReseatActivity"
+            android:name=".Login.ReseatActivity"
             android:exported="true" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Home.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".Registration.RegistrationActivity"
             android:exported="true" />
         <activity
-        android:name=".ProfileActivity"
+        android:name=".Profile.ProfileActivity"
         android:exported="true" />
 
-        <activity android:name=".EditProfileActivity"
+        <activity android:name=".NotificationActivity"
             android:exported="true"
             />
 
-        <activity android:name=".SecurityActivity"
+
+        <activity android:name=".Profile.EditProfileActivity"
             android:exported="true"
             />
 
-        <activity android:name=".SettingsActivity"
+        <activity android:name=".Profile.SecurityActivity"
+            android:exported="true"
+            />
+
+        <activity android:name=".Profile.SettingsActivity"
             android:exported="true"
             />
 
 
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".Login.LoginActivity"
             android:exported="true" />
 
         <activity

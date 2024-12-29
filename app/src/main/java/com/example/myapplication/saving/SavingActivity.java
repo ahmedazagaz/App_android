@@ -12,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.myapplication.HomeActivity;
+import com.example.myapplication.Home.HomeActivity;
 import com.example.myapplication.R;
-import com.example.myapplication.SearchActivity;
-import com.example.myapplication.TransactionActivity;
+import com.example.myapplication.Search.SearchActivity;
+import com.example.myapplication.Transaction.TransactionActivity;
 import com.example.myapplication.category.CategoryActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,6 +24,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class SavingActivity extends AppCompatActivity {
 
@@ -97,7 +98,7 @@ public class SavingActivity extends AppCompatActivity {
         List<Saving> defaultSavings = new ArrayList<>();
         defaultSavings.add(new Saving("Travel", R.drawable.ic_travel, 1000));
         defaultSavings.add(new Saving("New House", R.drawable.ic_house, 2000));
-        defaultSavings.add(new Saving("Car", R.drawable.car, 1500));
+        defaultSavings.add(new Saving("Car", R.drawable.ic_car, 1500));
         defaultSavings.add(new Saving("Wedding", R.drawable.ic_wedding, 5000));
 
         for (Saving saving : defaultSavings) {
